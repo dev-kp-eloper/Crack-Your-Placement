@@ -1,0 +1,17 @@
+//Link - https://www.codingninjas.com/studio/problems/children-sum-property_8357239?leftPanelTab=0
+
+bool solve(Node *root){
+    if(root == NULL or (root -> left == NULL and root -> right == NULL))return true;
+
+    if(!solve(root -> left) or !solve(root -> right))return false;
+
+    int child = 0;
+    if(root -> left)child += root -> left -> data;
+    if(root -> right)child += root -> right -> data;
+
+    return child == root -> data;
+}
+
+bool isParentSum(Node *root){
+    return solve(root);
+}
